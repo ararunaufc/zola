@@ -207,3 +207,12 @@ impl Default for Markdown {
         }
     }
 }
+
+/// Represents all Markdown constructs that the user asked to override rendering.
+///
+/// Each field corresponds to a different construct. Being `Option`s, a value of
+/// `Some(t)` represents that that construct is overriden by the template with
+/// path `t`, and `None` represents the user didn't specify a template and thus
+/// doesn't want to override it.
+#[derive(Debug, Default, Clone)]
+pub struct RenderHooks {}

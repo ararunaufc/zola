@@ -17,6 +17,8 @@ use errors::{anyhow, bail, Result};
 use utils::fs::read_file;
 use utils::slugs::slugify_paths;
 
+use self::markup::RenderHooks;
+
 // We want a default base url for tests
 static DEFAULT_BASE_URL: &str = "http://a-website.com";
 
@@ -40,6 +42,9 @@ pub struct Config {
     pub title: Option<String>,
     /// Description of the site
     pub description: Option<String>,
+
+    #[serde(skip_serializing, skip_deserializing)] // not a typo, 2 are needed
+    pub render_hooks: RenderHooks,
 
     /// The language used in the site. Defaults to "en"
     pub default_language: String,
@@ -371,6 +376,7 @@ impl Default for Config {
             description: None,
             theme: None,
             default_language: "en".to_string(),
+            render_hooks: Default::default(),
             languages: HashMap::new(),
             generate_feed: false,
             feed_limit: None,
