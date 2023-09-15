@@ -558,7 +558,8 @@ pub fn markdown_to_html(
             insert_many(&mut events, anchors_to_insert);
         }
 
-        cmark::html::push_html(&mut html, events.into_iter());
+        //cmark::html::push_html(&mut html, events.into_iter());
+        crate::html::push_html(&mut html, events.into_iter(), &context.config.render_hooks);
     }
 
     if let Some(e) = error {

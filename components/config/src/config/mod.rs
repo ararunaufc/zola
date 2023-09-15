@@ -43,6 +43,7 @@ pub struct Config {
     /// Description of the site
     pub description: Option<String>,
 
+    /// Markdown constructs that the user wants to hook into while being rendered.
     #[serde(skip_serializing, skip_deserializing)] // not a typo, 2 are needed
     pub render_hooks: RenderHooks,
 

@@ -1,5 +1,6 @@
 mod codeblock;
 mod context;
+mod html;
 mod markdown;
 mod shortcode;
 
